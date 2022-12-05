@@ -19,7 +19,7 @@ class PlayerTest {
 
     @Nested
     @DisplayName("사용자의 공 숫자 입력을 테스트한다")
-    class testPlayerBallNumberInput {
+    class testPlayerBallConditionNumberInput {
         @Test
         @DisplayName("사용자 입력 난수에 이상이 없는 케이스를 테스트한다")
         void 사용자_입력_숫자_리스트_생성_성공() {

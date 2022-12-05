@@ -1,6 +1,6 @@
 package baseball.domain.hint;
 
-import baseball.domain.game.Ball;
+import baseball.domain.ball.BallCondition;
 import java.util.List;
 
 public class Hint {
@@ -20,14 +20,14 @@ public class Hint {
     }
 
     private void determineBallStrike(List<Integer> playerBalls, List<Integer> computerBalls) {
-        for (int playerIdx = 0; playerIdx < Ball.COUNT.getValue(); playerIdx++) {
+        for (int playerIdx = 0; playerIdx < BallCondition.COUNT.getValue(); playerIdx++) {
             int playerBall = playerBalls.get(playerIdx);
             compareWithComputerBalls(computerBalls, playerBall, playerIdx);
         }
     }
 
     private void compareWithComputerBalls(List<Integer> computerBalls, int playerBall, int playerIdx) {
-        for (int computerIdx = 0; computerIdx < Ball.COUNT.getValue(); computerIdx++) {
+        for (int computerIdx = 0; computerIdx < BallCondition.COUNT.getValue(); computerIdx++) {
             int computerBall = computerBalls.get(computerIdx);
             updateBallCount(computerBall, playerBall, computerIdx, playerIdx);
         }

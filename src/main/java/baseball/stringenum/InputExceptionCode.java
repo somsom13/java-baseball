@@ -1,6 +1,6 @@
 package baseball.stringenum;
 
-import baseball.domain.game.Ball;
+import baseball.domain.ball.BallCondition;
 import baseball.domain.game.Restart;
 
 public enum InputExceptionCode {
@@ -13,21 +13,21 @@ public enum InputExceptionCode {
     NOT_3_NUMBERS {
         @Override
         public String toString() {
-            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", Ball.MIN.getValue(), Ball.MAX.getValue(),
-                    Ball.COUNT.getValue());
+            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", BallCondition.MIN.getValue(), BallCondition.MAX.getValue(),
+                    BallCondition.COUNT.getValue());
         }
     },
     NOT_IN_RANGE {
         @Override
         public String toString() {
-            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", Ball.MIN.getValue(), Ball.MAX.getValue(),
-                    Ball.COUNT.getValue());
+            return String.format("%d 부터 %d 사이의 %d개의 숫자만 입력할 수 있습니다.", BallCondition.MIN.getValue(), BallCondition.MAX.getValue(),
+                    BallCondition.COUNT.getValue());
         }
     },
     DUPLICATE_NUMBER {
         @Override
         public String toString() {
-            return String.format("서로 다른 %d개의 숫자만 입력할 수 있습니다.", Ball.COUNT.getValue());
+            return String.format("서로 다른 %d개의 숫자만 입력할 수 있습니다.", BallCondition.COUNT.getValue());
         }
     },
     NOT_RESTART_NUMBER {

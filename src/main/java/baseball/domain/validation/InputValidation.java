@@ -2,7 +2,7 @@ package baseball.domain.validation;
 
 import static baseball.stringenum.InputExceptionCode.*;
 
-import baseball.domain.game.Ball;
+import baseball.domain.ball.BallCondition;
 import baseball.domain.game.Restart;
 import java.util.List;
 
@@ -51,18 +51,18 @@ public class InputValidation {
     }
 
     private static boolean is3Numbers(String inputString) {
-        return inputString.length() == Ball.COUNT.getValue();
+        return inputString.length() == BallCondition.COUNT.getValue();
     }
 
     private static boolean isInRange(List<Integer> numberList) {
         return numberList.stream()
-                .allMatch(num -> num >= Ball.MIN.getValue() && num <= Ball.MAX.getValue());
+                .allMatch(num -> num >= BallCondition.MIN.getValue() && num <= BallCondition.MAX.getValue());
     }
 
     private static boolean isNotDuplicate(List<Integer> numberList) {
         long removeDuplicateCount = numberList.stream()
                 .distinct()
                 .count();
-        return removeDuplicateCount == Ball.COUNT.getValue();
+        return removeDuplicateCount == BallCondition.COUNT.getValue();
     }
 }

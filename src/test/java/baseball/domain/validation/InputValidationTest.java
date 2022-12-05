@@ -12,7 +12,7 @@ class InputValidationTest {
 
     @Nested
     @DisplayName("사용자 공 숫자 입력 검증을 테스트한다")
-    class testPlayerBallInput {
+    class testPlayerBallConditionInput {
 
         @Test
         @DisplayName("사용자 입력 난수에 숫자 외의 값이 포함된 케이스를 확인한다")

@@ -1,6 +1,6 @@
 package baseball.stringenum;
 
-import baseball.domain.game.Ball;
+import baseball.domain.ball.BallCondition;
 import baseball.domain.game.Restart;
 
 public enum Game {
@@ -19,7 +19,7 @@ public enum Game {
     END {
         @Override
         public String toString() {
-            return String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", Ball.COUNT.getValue());
+            return String.format("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", BallCondition.COUNT.getValue());
         }
     },
     RESTART {

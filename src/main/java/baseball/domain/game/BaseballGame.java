@@ -1,5 +1,6 @@
 package baseball.domain.game;
 
+import baseball.domain.ball.BallCondition;
 import baseball.stringenum.Game;
 import baseball.domain.computer.Computer;
 import baseball.domain.hint.Hint;
@@ -8,7 +9,7 @@ import baseball.domain.player.Player;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGame {
-    private static final String gameEndCondition = HintString.STRIKE.print(Ball.COUNT.getValue());
+    private static final String gameEndCondition = HintString.STRIKE.print(BallCondition.COUNT.getValue());
     private final Computer computer;
     private final Player player;
     private boolean isPlaying;
