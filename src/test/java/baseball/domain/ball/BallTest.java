@@ -2,6 +2,7 @@ package baseball.domain.ball;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.RandomBallGenerator;
 import baseball.stringenum.InputExceptionCode;
 import java.util.List;
 import java.util.stream.Stream;
@@ -63,5 +64,12 @@ class BallTest {
         );
     }
 
+    @Test
+    @DisplayName("랜덤 볼 생성 시 예외가 발생하지 않음을 테스트한다")
+    void checkRandomBallGeneration() {
+        new Ball(RandomBallGenerator.generateRandomBall());
+
+        //then : test pass
+    }
 
 }
