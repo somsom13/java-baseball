@@ -5,10 +5,21 @@ import java.util.List;
 
 // 단 하나의 컬렉션을 필드로 가지며 볼 리스트에 대해 공통적으로 수행되는 작업을 묶은 일급 컬렉션
 public class Ball {
-    private List<Integer> balls;
+    private final List<Integer> balls;
 
     public Ball(List<Integer> balls) {
         validate(balls);
+        this.balls = balls;
+    }
+
+    public BallJudgement judgeBallPitch(int position, int value) {
+        if (isStrike(position, value)) {
+            return BallJudgement.STRIKE;
+        }
+        if (isBall(value)) {
+            return BallJudgement.BALL;
+        }
+        return BallJudgement.MISS;
     }
 
     private void validate(List<Integer> balls) {
@@ -55,6 +66,14 @@ public class Ball {
 
     private boolean isInRange(int number) {
         return number >= BallCondition.MIN.getValue() && number <= BallCondition.MAX.getValue();
+    }
+
+    private boolean isStrike(int position, int value) {
+        return balls.get(position) == value;
+    }
+
+    private boolean isBall(int value) {
+        return balls.contains(value);
     }
 
 }
