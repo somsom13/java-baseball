@@ -1,66 +1,48 @@
 package baseball.domain.game;
 
-import baseball.domain.ball.BallCondition;
-import baseball.stringenum.Game;
+import baseball.domain.ball.Ball;
 import baseball.domain.computer.Computer;
 import baseball.domain.hint.Hint;
-import baseball.domain.hint.HintString;
 import baseball.domain.player.Player;
-import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class BaseballGame {
-    private static final String gameEndCondition = HintString.STRIKE.print(BallCondition.COUNT.getValue());
     private final Computer computer;
     private final Player player;
     private boolean isPlaying;
-    private boolean isStartRequested;
+    private Hint hint;
 
     public BaseballGame() {
         computer = new Computer();
         player = new Player();
         isPlaying = true;
-        isStartRequested = true;
     }
 
-    public void start() {
-        System.out.println(Game.START);
+    public Hint playNewTurn(List<Integer> balls) {
+        player.updatePlayerBall(new Ball(balls));
+        calculateHint(player.getPlayerBall());
+        return hint;
+    }
 
-        while (isStartRequested) {
-            isPlaying = true;
-            computer.generateRandomNumbers();
-            play();
-            checkGameRestart();
+    public void restart(String restartInput) {
+        isPlaying = Restart.isRestart(restartInput);
+    }
+
+    public boolean isGamePlaying() {
+        return isPlaying;
+    }
+
+    private void calculateHint(List<Integer> playerBalls) {
+        hint = new Hint();
+        for (int position = 0; position < playerBalls.size(); position++) {
+            hint.updateBallCount(computer.judgePitchBall(position, playerBalls.get(position)));
         }
     }
 
-    private void play() {
-        while (isPlaying) {
-            getPlayerNumber();
-            printHint();
-        }
-    }
-
-    private void getPlayerNumber() {
-        System.out.print(Game.INPUT);
-        player.readBallNumberInput(Console.readLine());
-    }
-
-    private void printHint() {
-        Hint hint = new Hint(player.getBallNumbers(), computer.getBallNumbers());
-        String hintStatement = hint.printHint();
-        checkPlayerWin(hintStatement);
-    }
-
-    private void checkPlayerWin(String hint) {
-        if (hint.equals(gameEndCondition)) {
-            System.out.println(Game.END);
+    private void checkGameEnd() {
+        if (hint.is3Strike()) {
             isPlaying = false;
         }
-    }
-
-    private void checkGameRestart() {
-        System.out.println(Game.RESTART);
-        isStartRequested = player.readRestartInput(Console.readLine());
     }
 
 }

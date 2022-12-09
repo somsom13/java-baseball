@@ -1,5 +1,6 @@
 package baseball.domain.hint;
 
+import baseball.domain.ball.BallCondition;
 import baseball.domain.ball.BallJudgement;
 
 public class Hint {
@@ -26,5 +27,9 @@ public class Hint {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public boolean is3Strike() {
+        return strikeCount == BallCondition.COUNT.getValue();
     }
 }

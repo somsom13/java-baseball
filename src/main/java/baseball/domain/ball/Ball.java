@@ -1,6 +1,7 @@
 package baseball.domain.ball;
 
 import baseball.stringenum.InputExceptionCode;
+import java.util.Collections;
 import java.util.List;
 
 // 단 하나의 컬렉션을 필드로 가지며 볼 리스트에 대해 공통적으로 수행되는 작업을 묶은 일급 컬렉션
@@ -20,6 +21,10 @@ public class Ball {
             return BallJudgement.BALL;
         }
         return BallJudgement.MISS;
+    }
+
+    public List<Integer> getBallNumbers() {
+        return Collections.unmodifiableList(balls);
     }
 
     private void validate(List<Integer> balls) {

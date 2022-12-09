@@ -10,9 +10,8 @@ public class Computer {
     public Computer() {
         this.ball = new Ball(RandomBallGenerator.generateRandomBall());
     }
-
-    public BallJudgement calculateHint(int position, int number) {
-        return ball.judgeBallPitch(position, number);
+    public BallJudgement judgePitchBall(int position, int value) {
+        return ball.judgeBallPitch(position, value);
     }
 
 }
