@@ -11,6 +11,11 @@ public class InputView {
         return readNumbers(Console.readLine());
     }
 
+    public String readPlayerRestart() {
+        System.out.println(GamePrintConstant.RESTART);
+        return readNumbers(Console.readLine());
+    }
+
     // input 이 너무 중복된다.
     private String readNumbers(String input) {
         validateOnlyString(input);
