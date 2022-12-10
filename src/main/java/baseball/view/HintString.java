@@ -1,4 +1,4 @@
-package baseball.domain.hint;
+package baseball.view;
 
 public enum HintString {
     BALL("%d볼 "),

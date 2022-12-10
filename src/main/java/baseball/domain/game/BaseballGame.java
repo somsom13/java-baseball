@@ -14,9 +14,10 @@ public class BaseballGame {
     private Hint hint;
 
     public BaseballGame() {
-        computer = new Computer(new Ball(RandomBallGenerator.generateRandomBall()));
+        computer = new Computer();
         player = new Player();
         isPlaying = true;
+        setNewGame();
     }
 
     public Hint playNewTurn(List<Integer> balls) {
@@ -45,6 +46,10 @@ public class BaseballGame {
         if (hint.is3Strike()) {
             isPlaying = false;
         }
+    }
+
+    private void setNewGame() {
+        this.computer.updateNewComputerBall(new Ball(RandomBallGenerator.generateRandomBall()));
     }
 
 }

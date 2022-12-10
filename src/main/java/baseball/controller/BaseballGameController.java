@@ -22,7 +22,7 @@ public class BaseballGameController {
         outputView.printGameStart();
         while (baseballGame.isGamePlaying()) {
             Hint hint = baseballGame.playNewTurn(generateBalls(inputView.readPlayerBallNumber()));
-            //hint 출력
+            outputView.printHint(hint);
             checkGameEnd();
         }
         outputView.printGameEnd();

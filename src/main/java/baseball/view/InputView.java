@@ -7,7 +7,7 @@ public class InputView {
     private static final String NUMBER_REGEX = "[0-9]+";
 
     public String readPlayerBallNumber() {
-        System.out.println(GamePrintConstant.NUMBER_INPUT);
+        System.out.print(GamePrintConstant.NUMBER_INPUT);
         return readNumbers(Console.readLine());
     }
 
