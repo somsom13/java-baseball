@@ -22,6 +22,7 @@ public class BaseballGame {
     public Hint playNewTurn(List<Integer> balls) {
         player.updatePlayerBall(new Ball(balls));
         calculateHint(player.getPlayerBall());
+        checkGameSuccess();
         return hint;
     }
 
@@ -40,7 +41,7 @@ public class BaseballGame {
         }
     }
 
-    private void checkGameEnd() {
+    private void checkGameSuccess() {
         if (hint.is3Strike()) {
             isPlaying = false;
         }
