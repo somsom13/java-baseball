@@ -1,9 +1,10 @@
 package baseball.domain.computer;
 
-import static baseball.domain.ball.BallCondition.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.BallJudgement;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,20 +13,32 @@ class ComputerTest {
     private Computer computer;
 
     @BeforeEach
-    void createComputer() {
-        computer = new Computer();
+    void setUp() {
+        computer = new Computer(new Ball(List.of(1, 2, 3)));
     }
 
     @Test
-    @DisplayName("컴퓨터 생성 난수를 테스트한다")
-    void 컴퓨터_생성_난수() {
-        computer.generateRandomNumbers();
+    @DisplayName("위치가 같고 값이 다르다면 BALL 로 판정된다")
+    void playerBallWithDiffPositionSameValue() {
+        int position = 2;
+        int value = 1;
+        assertThat(computer.judgePitchBall(position, value)).isEqualTo(BallJudgement.BALL);
+    }
 
-        assertAll(
-                () -> assertThat(computer.getBallNumbers().size()).isEqualTo(COUNT.getValue()),
-                () -> assertThat(computer.getBallNumbers()).allMatch(number -> number >= MIN.getValue() && number <= MAX.getValue()),
-                () -> assertThat(computer.getBallNumbers().stream().distinct().count()).isEqualTo(COUNT.getValue())
-                );
+    @Test
+    @DisplayName("위치와 값이 동일하다면 STRIKE 로 판정된다")
+    void playerBallWithSameValuePosition() {
+        int position = 2;
+        int value = 3;
+        assertThat(computer.judgePitchBall(position, value)).isEqualTo(BallJudgement.STRIKE);
+    }
+
+    @Test
+    @DisplayName("위치와 값이 모두 다르다면 MISS 로 판정된다")
+    void playerBallWithDiffValuePosition() {
+        int position = 1;
+        int value = 4;
+        assertThat(computer.judgePitchBall(position, value)).isEqualTo(BallJudgement.MISS);
     }
 
 }

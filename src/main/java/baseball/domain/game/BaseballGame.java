@@ -1,5 +1,6 @@
 package baseball.domain.game;
 
+import baseball.RandomBallGenerator;
 import baseball.domain.ball.Ball;
 import baseball.domain.computer.Computer;
 import baseball.domain.hint.Hint;
@@ -13,7 +14,7 @@ public class BaseballGame {
     private Hint hint;
 
     public BaseballGame() {
-        computer = new Computer();
+        computer = new Computer(new Ball(RandomBallGenerator.generateRandomBall()));
         player = new Player();
         isPlaying = true;
     }
