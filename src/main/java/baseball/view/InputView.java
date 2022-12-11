@@ -23,12 +23,9 @@ public class InputView {
     }
 
     private void validateOnlyString(String input) {
-        if (isNoneNumberIncluded(input)) {
-            throw new IllegalArgumentException(InputExceptionCode.NOT_NUMBER_INCLUDE.toString());
+        if (input.matches(NUMBER_REGEX)) {
+            return;
         }
-    }
-
-    private boolean isNoneNumberIncluded(String input) {
-        return !input.matches(NUMBER_REGEX);
+        throw new IllegalArgumentException(InputExceptionCode.NOT_NUMBER_INCLUDE.toString());
     }
 }

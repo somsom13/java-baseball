@@ -14,7 +14,8 @@ class ComputerTest {
 
     @BeforeEach
     void setUp() {
-        computer = new Computer(new Ball(List.of(1, 2, 3)));
+        computer = new Computer();
+        computer.updateNewComputerBall(new Ball(List.of(1, 2, 3)));
     }
 
     @Test

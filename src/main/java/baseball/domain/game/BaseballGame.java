@@ -29,6 +29,9 @@ public class BaseballGame {
 
     public void restart(String restartInput) {
         isPlaying = Restart.isRestart(restartInput);
+        if (isPlaying) {
+            setNewGame();
+        }
     }
 
     public boolean isGamePlaying() {
